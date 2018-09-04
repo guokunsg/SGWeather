@@ -13,17 +13,7 @@ import { W2HR_STATE_LOADING, W2HR_STATE_DATA_REFRESHED, W2HR_STATE_ERROR }
     from '../reducers/Weather2hrReducer'
 import appStyles from '../AppStyle'
 import createWeatherNavigator2hr from '../components/WeatherNavigator2hr'
-
-// Format the date to display. Format: YY-MM-DD HH:MM
-function formatDate(date: Date) {
-    /* eslint-disable prefer-template */
-    return (date.getFullYear() % 100)
-            + '-' + ('0' + (date.getMonth() + 1)).slice(-2)
-            + '-' + ('0' + date.getDate()).slice(-2)
-            + ' ' + ('0' + date.getHours()).slice(-2)
-            + ':' + ('0' + date.getMinutes()).slice(-2)
-    /* eslint-disable prefer-template */
-}
+import { formatDate } from '../utils/Utils'
 
 // Get the header text based on the current state status
 function getHeaderText(state: W2HrState) {
