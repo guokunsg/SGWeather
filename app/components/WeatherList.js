@@ -59,19 +59,16 @@ export class WeatherList extends Component<Props> {
       </View>
     );
 
+    keyExtractor = (item: W2HrForecastItem) => item.name
+
     render() {
         const { data } = this.props
-        const listData = []
-        if (data) {
-            for (let i = 0; i < data.length; i += 1) {
-                listData.push({ ...data[i], key: data[i].name })
-            }
-        }
         return (
           <FlatList
             styles={styles.list}
-            data={listData}
+            data={data}
             numColumns={3}
+            keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
         )
