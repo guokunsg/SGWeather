@@ -3,31 +3,16 @@
 /* eslint-disable global-require */
 
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { NavigationScreenProp } from 'react-navigation'
 import { fetchWeather2Hours } from '../actions/WeatherAction2hr'
-import type { W2HrFetch2Hours, W2HrState } from '../types/Weather2hr'
-import { W2HR_STATE_LOADING, W2HR_STATE_DATA_REFRESHED, W2HR_STATE_ERROR }
-    from '../reducers/Weather2hrReducer'
+import type { W2HrFetch2Hours } from '../types/Weather2hr'
 import appStyles from '../AppStyle'
-import createWeatherNavigator2hr from '../components/WeatherNavigator2hr'
-import { formatDate } from '../utils/Utils'
 
-// Get the header text based on the current state status
-function getHeaderText(state: W2HrState) {
-    switch (state.status) {
-        case W2HR_STATE_LOADING:
-            return 'Loading data ...'
-        case W2HR_STATE_DATA_REFRESHED:
-            return `Forecast from ${formatDate(state.data.validFrom)} to ${formatDate(state.data.validTo)}`
-        case W2HR_STATE_ERROR:
-            return `Error: ${state.error.message}`
-        default:
-            return 'No data'
-    }
-}
+import WeatherHeader2hr from './WeatherHeader2hr'
+import WeatherNavigator2hr from './WeatherNavigator2hr'
 
 // Create the refresh button in the header bar
 function createRefreshButton(navigation) {
@@ -44,19 +29,9 @@ function createRefreshButton(navigation) {
     )
 }
 
-export const styles = StyleSheet.create({
-    header: {
-        textAlign: 'left',
-        backgroundColor: '#F5FCFF',
-        padding: 4,
-        paddingLeft: 16,
-    },
-})
-
 type Props = {
     fetchWeather2Hours: W2HrFetch2Hours,
     navigation: NavigationScreenProp<{}>,
-    weather2hr: W2HrState
 }
 
 class WeatherScreen2hr extends React.Component<Props> {
@@ -75,25 +50,17 @@ class WeatherScreen2hr extends React.Component<Props> {
     }
 
     render() {
-        const { weather2hr } = this.props
-        const headerText = getHeaderText(weather2hr)
-        const listData = weather2hr.data ? weather2hr.data.forecasts : null
-        const TabNavigator = createWeatherNavigator2hr(listData)
         return (
           <View style={{ flex: 1, flexDirection: 'column' }}>
-            <Text style={styles.header}>{headerText}</Text>
-            <TabNavigator persistenceKey="WeatherForecast2HoursTabState" />
+            <WeatherHeader2hr />
+            <WeatherNavigator2hr />
           </View>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    weather2hr: state.weather2hr,
-    })
+const mapStateToProps = () => ({})
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchWeather2Hours,
-    }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchWeather2Hours }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherScreen2hr)
