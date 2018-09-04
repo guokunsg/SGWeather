@@ -1,7 +1,7 @@
 // @flow
 
 import Immutable from 'seamless-immutable'
-import { W2HR_ACTION_STARTING, W2HR_ACTION_DATA_READY, W2HR_ACTION_ERROR } from '../actions/WeatherAction2hr'
+import { W2HrActionTypes } from '../actions/WeatherAction2hr'
 import type { W2HrAction, W2HrState, W2HrForecasts } from '../types/Weather2hr'
 
 /** Current state status */
@@ -47,14 +47,14 @@ function convertData(serverData: any) : W2HrForecasts {
 
 export const reducer = (state: W2HrState = initState, action: W2HrAction) => {
     switch (action.type) {
-        case W2HR_ACTION_STARTING: {
+        case W2HrActionTypes.Start: {
             return Immutable({
                 status: W2HR_STATE_LOADING,
                 data: state.data,
                 error: null,
             })
         }
-        case W2HR_ACTION_DATA_READY: {
+        case W2HrActionTypes.DataReady: {
             try {
                 return Immutable({
                     status: W2HR_STATE_DATA_REFRESHED,
@@ -62,6 +62,7 @@ export const reducer = (state: W2HrState = initState, action: W2HrAction) => {
                     error: null,
                 })
             } catch (err) {
+                console.error(err)
                 return Immutable({
                     status: W2HR_STATE_ERROR,
                     data: state.data,
@@ -69,7 +70,7 @@ export const reducer = (state: W2HrState = initState, action: W2HrAction) => {
                 })
             }
         }
-        case W2HR_ACTION_ERROR: {
+        case W2HrActionTypes.Error: {
             return Immutable({
                 status: W2HR_STATE_ERROR,
                 data: state.data,
