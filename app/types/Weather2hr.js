@@ -30,7 +30,7 @@ export type W2HrForecasts = {
     forecasts: Array<W2HrForecastItem>
 }
 
-/** Redux state type for 2 hours weather forecast */
+/** Redux state status for 2 hours weather forecast */
 export type W2HrState = { status: typeof W2HR_STATE_INIT, data: null, error: null }
         | { status: typeof W2HR_STATE_LOADING, data: ?W2HrForecasts, error: null}
         | { status: typeof W2HR_STATE_DATA_REFRESHED, data: W2HrForecasts, error: null}
