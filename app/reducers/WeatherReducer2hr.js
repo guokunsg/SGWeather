@@ -1,24 +1,12 @@
 // @flow
 
 import Immutable from 'seamless-immutable'
-import { W2HrActionTypes } from '../actions/WeatherAction2hr'
-import type { W2HrAction, W2HrState, W2HrForecasts } from '../types/Weather2hr'
+import { WeatherActionTypes2Hr } from '../actions/WeatherAction2hr'
+import type { WeatherAction2Hr, WeatherState2Hr, WeatherForecast } from '../types/WeatherForecast'
 import networkReducer from './NetworkReducer'
 
-/** Current state status */
-export const W2HR_STATE_INIT = 'w2hr_state_init'
-export const W2HR_STATE_LOADING = 'w2hr_state_loading'
-export const W2HR_STATE_DATA_REFRESHED = 'w2hr_state_data_refreshed'
-export const W2HR_STATE_ERROR = 'w2hr_state_error'
-export const W2HrStoreStatus = Immutable({
-    Init: W2HR_STATE_INIT,
-    Loading: W2HR_STATE_LOADING,
-    DataUpdated: W2HR_STATE_DATA_REFRESHED,
-    Error: W2HR_STATE_ERROR,
-})
-
 const initState = {
-    status: W2HR_STATE_INIT,
+    status: 'NetworkStoreStatusInit',
     data: null,
     error: null,
 }
@@ -27,7 +15,7 @@ const initState = {
  * Convert server data to local data
  * @param {object} serverData
  */
-function convertData(serverData: any) : W2HrForecasts {
+function convertData(serverData: any) : WeatherForecast {
     const map = new Map()
     serverData.area_metadata.forEach((value) => {
         const location = {}
@@ -52,8 +40,7 @@ function convertData(serverData: any) : W2HrForecasts {
     return Immutable(data)
 }
 
-const reducer = (state: W2HrState = initState, action: W2HrAction) => { // eslint-disable-line arrow-body-style
-    return networkReducer(state, action, convertData, W2HrActionTypes, W2HrStoreStatus)
-}
+const reducer = (state: WeatherState2Hr = initState,
+    action: WeatherAction2Hr) => networkReducer(state, action, convertData, WeatherActionTypes2Hr)
 
 export default reducer

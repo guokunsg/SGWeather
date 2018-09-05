@@ -8,16 +8,16 @@ import { connect } from 'react-redux'
 import WeatherList from '../components/WeatherList'
 import WeatherMap from '../components/WeatherMap'
 import appStyle from '../AppStyle'
-import type { W2HrForecastItem, W2HrForecasts } from '../types/Weather2hr'
+import type { LocationForecast, WeatherForecast } from '../types/WeatherForecast'
 
 /**
  * Create a bottom tab navigator, which contains 2hours weather forecast list and map display
  * @param {*} data
  *      Weather forecast array
  */
-function createWeatherNavigator2hr(forecasts: ?Array<W2HrForecastItem>) {
+function createWeatherNavigator2hr(forecasts: ?Array<LocationForecast>) {
     return createBottomTabNavigator({
-        LIST: { screen: props => <WeatherList {...props} data={forecasts} /> },
+        LIST: { screen: props => <WeatherList {...props} data={forecasts} columns={3} /> },
         MAP: { screen: props => <WeatherMap {...props} data={forecasts} /> },
     }, {
         tabBarOptions: appStyle.bottomTabBarOption,
@@ -25,16 +25,13 @@ function createWeatherNavigator2hr(forecasts: ?Array<W2HrForecastItem>) {
 }
 
 type Props = {
-    forecasts: W2HrForecasts
+    forecasts: WeatherForecast
 }
 
 /** TabNavigator to show weather forecast in list or map.
  * Only re-render if the forecast data has been changed.
  */
 export class WeatherNavigator2hr extends React.Component<Props> {
-    componentDidMount() {
-    }
-
     // Checks whether should update UI. Update only if the data has been changed
     shouldComponentUpdate(nextProps: Object) {
         return JSON.stringify(this.props) !== JSON.stringify(nextProps)

@@ -20,7 +20,7 @@ export default function App() {
     <Provider store={store}>
       <View style={{ flex: 1 }}>
         <StatusBar backgroundColor={appStyle.systemStatusBarColor} />
-        <AppNavigation />
+        <AppNavigation persistenceKey="AppNavigatorState" />
       </View>
     </Provider>
     )

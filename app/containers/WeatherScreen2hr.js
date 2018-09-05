@@ -6,9 +6,9 @@ import React from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { NavigationScreenProp } from 'react-navigation'
-import { fetchWeather2Hours } from '../actions/WeatherAction2hr'
-import type { W2HrFetch2Hours } from '../types/Weather2hr'
+import type { NavigationScreenProp } from 'react-navigation'
+import { fetchWeather2Hr } from '../actions/WeatherAction2hr'
+import type { FetchWeather2Hr } from '../types/WeatherForecast'
 import appStyles from '../AppStyle'
 
 import WeatherHeader2hr from './WeatherHeader2hr'
@@ -17,7 +17,7 @@ import WeatherNavigator2hr from './WeatherNavigator2hr'
 // Create the refresh button in the header bar
 function createRefreshButton(navigation) {
     return (
-      <TouchableOpacity activeOpacity={0.5} onPress={navigation.getParam('fetchWeather2Hours')}>
+      <TouchableOpacity activeOpacity={0.5} onPress={navigation.getParam('actionRefresh')}>
         <Image
           style={appStyles.styles.headerBarButton}
           source={
@@ -30,7 +30,7 @@ function createRefreshButton(navigation) {
 }
 
 type Props = {
-    fetchWeather2Hours: W2HrFetch2Hours,
+    actionRefresh: FetchWeather2Hr,
     navigation: NavigationScreenProp<{}>,
 }
 
@@ -43,15 +43,15 @@ class WeatherScreen2hr extends React.Component<Props> {
         });
 
     componentDidMount() {
-        const { fetchWeather2Hours, navigation } = this.props // eslint-disable-line no-shadow
-        fetchWeather2Hours()
+        const { actionRefresh, navigation } = this.props
+        actionRefresh()
         // Set the action so that the header can call it
-        navigation.setParams({ fetchWeather2Hours })
+        navigation.setParams({ actionRefresh })
     }
 
     render() {
         return (
-          <View style={{ flex: 1, flexDirection: 'column' }}>
+          <View style={{ flex: 1, flexDirection: 'column', backgroundColor: appStyles.mainBackgroundColor }}>
             <WeatherHeader2hr />
             <WeatherNavigator2hr />
           </View>
@@ -61,6 +61,6 @@ class WeatherScreen2hr extends React.Component<Props> {
 
 const mapStateToProps = () => ({})
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchWeather2Hours }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ actionRefresh: fetchWeather2Hr }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherScreen2hr)

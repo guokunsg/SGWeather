@@ -23,7 +23,10 @@
       "object-curly-newline": "off",
       "max-len": [1, 120, 4],
       "semi": ["error", "never"],
-      "no-console": "off"
+      "no-console": "off",
+      "arrow-body-style": "off",
+      "react/prefer-stateless-function": "off",
+      "import/prefer-default-export": "off"
     },
     "env": {
         "es6": true,

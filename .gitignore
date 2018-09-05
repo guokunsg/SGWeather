@@ -56,5 +56,6 @@ buck-out/
 *.jsbundle
 
 flow_gen
+flow-typed
 test_gen
 coverage

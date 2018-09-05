@@ -16,7 +16,7 @@ describe('Fetch network action', () => {
     it('Test fetch data success', (done) => {
         utils.hasConnection = jest.fn(() => Promise.resolve(true)) // Mock has connection
         let count = 0
-        fetchData(appConfig.URL_WEATHER_FORECAST_2_HOURS, ((action) => {
+        fetchData(appConfig.urlWeatherForecast2Hr, ((action) => {
             if (count === 0) {
                 expect(action).toEqual({ type: types.Start, data: null, error: null })
             } else if (action.type === types.DataReady) {
@@ -33,7 +33,7 @@ describe('Fetch network action', () => {
 
     it('Test no network', (done) => {
         utils.hasConnection = jest.fn(() => Promise.resolve(false)) // Mock no connection
-        fetchData(appConfig.URL_WEATHER_FORECAST_2_HOURS, ((action) => {
+        fetchData(appConfig.urlWeatherForecast24Hr, ((action) => {
             expect(action).toEqual({ type: types.Error, data: null, error: new Error('No network') })
             done()
         }), types)

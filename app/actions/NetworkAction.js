@@ -3,9 +3,10 @@
 import axios from 'axios'
 import type { Dispatch as ReduxDispatch } from 'redux'
 import { hasConnection } from '../utils/Utils'
-import type { NetworkActionTypes, NetworkAction } from '../types/common'
+import type { NetworkActionTypes, NetworkAction } from '../types/NetworkActionStore'
 
-function dispatchAction(dispatch: ReduxDispatch, type: string, data: any, error: ?Error) : NetworkAction {
+function dispatchAction(dispatch: ReduxDispatch<NetworkAction>,
+    type: string, data: any, error: ?Error) : NetworkAction {
     return dispatch({ type, data, error })
 }
 
@@ -18,7 +19,7 @@ function dispatchAction(dispatch: ReduxDispatch, type: string, data: any, error:
  * @param {NetworkActionTypes} action
  *      The action types to dispatch
  */
-export function fetchData(url: string, dispatch: ReduxDispatch, action: NetworkActionTypes) {
+export function fetchData(url: string, dispatch: ReduxDispatch<NetworkAction>, action: NetworkActionTypes) {
     console.debug('Start fetching data ...')
     hasConnection()
         .then((connected) => {

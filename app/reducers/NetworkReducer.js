@@ -1,14 +1,16 @@
 // @flow
 
 import Immutable from 'seamless-immutable'
-import type { NetworkAction, NetworkActionTypes, NetworkStoreStatus } from '../types/common'
+import { NetworkStoreStatusLoading, NetworkStoreStatusDataUpdated,
+        NetworkStoreStatusError } from '../types/NetworkActionStore'
+import type { NetworkAction, NetworkActionTypes } from '../types/NetworkActionStore'
 
 export default (state: any, action: NetworkAction, dataConverter: (Object => Object),
-        actionTypes: NetworkActionTypes, stateStatus: NetworkStoreStatus) => {
+        actionTypes: NetworkActionTypes) => {
     switch (action.type) {
         case actionTypes.Start: {
             return Immutable({
-                status: stateStatus.Loading,
+                status: NetworkStoreStatusLoading,
                 data: state.data,
                 error: null,
             })
@@ -16,14 +18,14 @@ export default (state: any, action: NetworkAction, dataConverter: (Object => Obj
         case actionTypes.DataReady: {
             try {
                 return Immutable({
-                    status: stateStatus.DataUpdated,
+                    status: NetworkStoreStatusDataUpdated,
                     data: dataConverter(action.data),
                     error: null,
                 })
             } catch (err) {
                 console.error(err)
                 return Immutable({
-                    status: stateStatus.Error,
+                    status: NetworkStoreStatusError,
                     data: state.data,
                     error: new Error('Data error'),
                 })
@@ -31,7 +33,7 @@ export default (state: any, action: NetworkAction, dataConverter: (Object => Obj
         }
         case actionTypes.Error: {
             return Immutable({
-                status: stateStatus.Error,
+                status: NetworkStoreStatusError,
                 data: state.data,
                 error: action.error,
             })

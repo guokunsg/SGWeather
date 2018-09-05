@@ -7,7 +7,7 @@ import { View, StyleSheet } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import appConfig from '../AppConfig'
 import getWeatherImageSource from './WeatherImageSource'
-import type { W2HrForecastItem } from '../types/Weather2hr'
+import type { LocationForecast } from '../types/WeatherForecast'
 
 const styles = StyleSheet.create({
     container: {
@@ -22,14 +22,11 @@ const styles = StyleSheet.create({
 })
 
 type Props = {
-    data: Array<W2HrForecastItem>
+    data: Array<LocationForecast>
 }
 
 /** The map display of the weather forecast */
 export class WeatherForecastMap extends Component<Props> {
-    componentDidMount() {
-    }
-
     render() {
         const { data } = this.props
         const markers = []
@@ -45,15 +42,15 @@ export class WeatherForecastMap extends Component<Props> {
 
         return (
           <View style={styles.container}>
-            <MapView style={styles.map} region={appConfig.MAP_DEFAULT_REGION}>
+            <MapView style={styles.map} region={appConfig.mapDefaultRegion}>
               {
-                    markers.map(marker => (
-                      <Marker
-                        coordinate={marker.latlng}
-                        title={marker.name}
-                        image={getWeatherImageSource(marker.forecast)}
-                        key={marker.name}
-                      />
+                markers.map(marker => (
+                  <Marker
+                    coordinate={marker.latlng}
+                    title={marker.name}
+                    image={getWeatherImageSource(marker.forecast)}
+                    key={marker.name}
+                  />
                 ))}
             </MapView>
           </View>

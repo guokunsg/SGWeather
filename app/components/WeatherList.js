@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import { View, Text, Image, FlatList, StyleSheet } from 'react-native'
 
 import getWeatherImageSource from './WeatherImageSource'
-import type { W2HrForecastItem } from '../types/Weather2hr'
+import type { LocationForecast } from '../types/WeatherForecast'
 
 const styles = StyleSheet.create({
     list: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontWeight: 'bold',
-        height: 60,
+        height: 50,
     },
 })
 
@@ -46,28 +46,26 @@ function getWeatherImage(forecast: string) {
 }
 
 type Props = {
-    data: Array<W2HrForecastItem>
+    columns: number,
+    data: Array<LocationForecast>
 }
 export class WeatherList extends Component<Props> {
-    componentDidMount() {
-    }
-
-    renderItem = ({ item }: { item: W2HrForecastItem }) => ( // eslint-disable-line react/no-unused-prop-types
+    renderItem = ({ item }: { item: LocationForecast }) => ( // eslint-disable-line react/no-unused-prop-types
       <View style={styles.listItem}>
         { getWeatherImage(item.forecast) }
         <Text style={styles.itemText}>{item.name}</Text>
       </View>
     );
 
-    keyExtractor = (item: W2HrForecastItem) => item.name
+    keyExtractor = (item: LocationForecast) => item.name
 
     render() {
-        const { data } = this.props
+        const { data, columns } = this.props
         return (
           <FlatList
             styles={styles.list}
             data={data}
-            numColumns={3}
+            numColumns={columns}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />

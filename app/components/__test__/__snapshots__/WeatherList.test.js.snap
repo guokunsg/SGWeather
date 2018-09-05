@@ -67,7 +67,7 @@ exports[`Test weather forecast list render data 1`] = `
   initialNumToRender={10}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
-  numColumns={3}
+  numColumns={1}
   onContentSizeChange={[Function]}
   onEndReachedThreshold={2}
   onLayout={[Function]}
@@ -94,128 +94,41 @@ exports[`Test weather forecast list render data 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-            undefined,
-          ]
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
         }
       >
-        <View
+        <Image
+          source={
+            Object {
+              "uri": "Cloudy",
+            }
+          }
           style={
             Object {
-              "alignItems": "center",
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
               "flex": 1,
-              "flexDirection": "column",
               "padding": 8,
+              "textAlign": "center",
             }
           }
         >
-          <Image
-            source={
-              Object {
-                "uri": "Cloudy",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data1
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "column",
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              Object {
-                "uri": "Partly Cloudy (Day)",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data2
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "column",
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              Object {
-                "uri": "Partly Cloudy (Night)",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data3
-          </Text>
-        </View>
+          data1
+        </Text>
       </View>
     </View>
     <View
@@ -224,128 +137,41 @@ exports[`Test weather forecast list render data 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-            undefined,
-          ]
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
         }
       >
-        <View
+        <Image
+          source={
+            Object {
+              "uri": "Partly Cloudy (Day)",
+            }
+          }
           style={
             Object {
-              "alignItems": "center",
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
               "flex": 1,
-              "flexDirection": "column",
               "padding": 8,
+              "textAlign": "center",
             }
           }
         >
-          <Image
-            source={
-              Object {
-                "uri": "Moderate Rain",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data4
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "column",
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              Object {
-                "uri": "Light Rain",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data5
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "column",
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              Object {
-                "uri": "Light Showers",
-              }
-            }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data6
-          </Text>
-        </View>
+          data2
+        </Text>
       </View>
     </View>
     <View
@@ -354,128 +180,299 @@ exports[`Test weather forecast list render data 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-            undefined,
-          ]
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
         }
       >
-        <View
+        <Image
+          source={
+            Object {
+              "uri": "Partly Cloudy (Night)",
+            }
+          }
           style={
             Object {
-              "alignItems": "center",
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
               "flex": 1,
-              "flexDirection": "column",
               "padding": 8,
+              "textAlign": "center",
             }
           }
         >
-          <Image
-            source={
-              Object {
-                "uri": "Showers",
-              }
+          data3
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "Moderate Rain",
             }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data7
-          </Text>
-        </View>
-        <View
+          }
           style={
             Object {
-              "alignItems": "center",
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
               "flex": 1,
-              "flexDirection": "column",
               "padding": 8,
+              "textAlign": "center",
             }
           }
         >
-          <Image
-            source={
-              Object {
-                "uri": "Thundery Showers",
-              }
+          data4
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "Light Rain",
             }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
-            }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
-            }
-          >
-            data8
-          </Text>
-        </View>
-        <View
+          }
           style={
             Object {
-              "alignItems": "center",
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
               "flex": 1,
-              "flexDirection": "column",
               "padding": 8,
+              "textAlign": "center",
             }
           }
         >
-          <Image
-            source={
-              Object {
-                "uri": "unknown text",
-              }
+          data5
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "Light Showers",
             }
-            style={
-              Object {
-                "height": 50,
-                "width": 50,
-              }
+          }
+          style={
+            Object {
+              "height": 50,
+              "width": 50,
             }
-          />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "padding": 8,
-                "textAlign": "center",
-              }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "flex": 1,
+              "padding": 8,
+              "textAlign": "center",
             }
-          >
-            data9
-          </Text>
-        </View>
+          }
+        >
+          data6
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "Showers",
+            }
+          }
+          style={
+            Object {
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "flex": 1,
+              "padding": 8,
+              "textAlign": "center",
+            }
+          }
+        >
+          data7
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "Thundery Showers",
+            }
+          }
+          style={
+            Object {
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "flex": 1,
+              "padding": 8,
+              "textAlign": "center",
+            }
+          }
+        >
+          data8
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "column",
+            "padding": 8,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "unknown text",
+            }
+          }
+          style={
+            Object {
+              "height": 50,
+              "width": 50,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "flex": 1,
+              "padding": 8,
+              "textAlign": "center",
+            }
+          }
+        >
+          data9
+        </Text>
       </View>
     </View>
   </View>
@@ -491,7 +488,7 @@ exports[`Test weather forecast list renders empty 1`] = `
   initialNumToRender={10}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
-  numColumns={3}
+  numColumns={1}
   onContentSizeChange={[Function]}
   onEndReachedThreshold={2}
   onLayout={[Function]}
